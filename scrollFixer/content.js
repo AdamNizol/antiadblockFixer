@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(function(request) {
 
        // Get the overflow value
        var oflw = window.getComputedStyle(elm, null).getPropertyValue("overflow") || "";
-       var oflwY = window.getComputedStyle(elm, null).getPropertyValue("overflowY") || "";
+       var oflwY = window.getComputedStyle(elm, null).getPropertyValue("overflow-y") || "";
 
        // Remove all whitespace, make it all lower case
        oflw = oflw.replace(/\s/g, "").toLowerCase();
@@ -30,7 +30,7 @@ chrome.runtime.onMessage.addListener(function(request) {
          elm.style.setProperty("overflow", "auto", "important")
        }
        if( oflwY == "hidden" ){
-         elm.style.setProperty("overflowY", "auto", "important")
+         elm.style.setProperty("overflow-y", "auto", "important")
        }
      }
 
