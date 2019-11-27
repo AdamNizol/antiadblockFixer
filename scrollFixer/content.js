@@ -15,7 +15,8 @@ chrome.runtime.onMessage.addListener(function(request) {
 
    // Loop through them
    Array.prototype.forEach.call(elms, function(elm) {
-     if(elm.tagName.toLowerCase() == "div" || elm.tagName.toLowerCase() == "section" || elm.tagName.toLowerCase() == "html" || elm.tagName.toLowerCase() == "body"){
+     let allowedTags = ["div", "section", "html", "body"];
+     if( allowedTags.includes( elm.tagName.toLowerCase() ) ){
        // Get the overflow value
        var oflw = window.getComputedStyle(elm, null).getPropertyValue("overflow") || "";
        var oflwY = window.getComputedStyle(elm, null).getPropertyValue("overflowY") || "";
