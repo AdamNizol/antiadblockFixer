@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener(function(request) {
    // Loop through them
    Array.prototype.forEach.call(elms, function(elm) {
      let allowedTags = ["div", "section", "html", "body"];
-     if( (allowedTags.includes( elm.tagName.toLowerCase() )) && elm.offsetHeight > 60){
+     if( (allowedTags.includes( elm.tagName.toLowerCase() )) && elm.offsetHeight > (screen.height*0.5) && elm.offsetWidth > (screen.width*0.5) ){
 
        // Get the overflow value
        var oflw = window.getComputedStyle(elm, null).getPropertyValue("overflow") || "";
