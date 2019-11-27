@@ -41,7 +41,20 @@ chrome.runtime.onMessage.addListener(function(request) {
      blackListIds = [
        "gateway-content"
      ]
-     if( (zIndex > 600 && pos == "fixed") || (blackListIds.includes(elm.id)) ){
+     blackListClasses = [
+       "tp-modal",
+       "tp-backdrop"
+     ]
+
+     classBlackListed = false;
+     for(let i = 0; i< blackListClasses.length; i++){
+       if (elm.classList.contains(blackListClasses[i]) ){
+         classBlackListed = true;
+       }
+     }
+
+
+     if( (zIndex > 600 && pos == "fixed") || (blackListIds.includes(elm.id)) || classBlackListed ){
        elm.parentNode.removeChild(elm);
      }
 
