@@ -38,7 +38,10 @@ chrome.runtime.onMessage.addListener(function(request) {
      let pos = window.getComputedStyle(elm, null).getPropertyValue("position") || "";
      let zIndex = window.getComputedStyle(elm, null).getPropertyValue("z-index") || "";
 
-     if(zIndex > 600 && pos == "fixed"){
+     blackListIds = [
+       "gateway-content"
+     ]
+     if( (zIndex > 600 && pos == "fixed") || (blackListIds.includes(elm.id)) ){
        elm.parentNode.removeChild(elm);
      }
 
