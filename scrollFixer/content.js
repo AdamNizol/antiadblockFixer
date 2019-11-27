@@ -16,7 +16,8 @@ chrome.runtime.onMessage.addListener(function(request) {
    // Loop through them
    Array.prototype.forEach.call(elms, function(elm) {
      let allowedTags = ["div", "section", "html", "body"];
-     if( allowedTags.includes( elm.tagName.toLowerCase() ) ){
+     if( (allowedTags.includes( elm.tagName.toLowerCase() )) && elm.offsetHeight > 60){
+
        // Get the overflow value
        var oflw = window.getComputedStyle(elm, null).getPropertyValue("overflow") || "";
        var oflwY = window.getComputedStyle(elm, null).getPropertyValue("overflowY") || "";
@@ -25,20 +26,20 @@ chrome.runtime.onMessage.addListener(function(request) {
        oflw = oflw.replace(/\s/g, "").toLowerCase();
        oflwY = oflwY.replace(/\s/g, "").toLowerCase();
 
-
-       if( (oflw != "") || (oflw != "auto")){
+       if(oflw == "hidden"){
          elm.style.setProperty("overflow", "auto", "important")
        }
-       if( (oflwY != "") || (oflwY != "auto")){
+       if( oflwY == "hidden" ){
          elm.style.setProperty("overflowY", "auto", "important")
        }
+     }
 
-       let pos = window.getComputedStyle(elm, null).getPropertyValue("position") || "";
-       let zIndex = window.getComputedStyle(elm, null).getPropertyValue("z-index") || "";
+     //remove overlay
+     let pos = window.getComputedStyle(elm, null).getPropertyValue("position") || "";
+     let zIndex = window.getComputedStyle(elm, null).getPropertyValue("z-index") || "";
 
-       if(zIndex > 600 && pos == "fixed"){
-         elm.parentNode.removeChild(elm);
-       }
+     if(zIndex > 600 && pos == "fixed"){
+       elm.parentNode.removeChild(elm);
      }
 
 
