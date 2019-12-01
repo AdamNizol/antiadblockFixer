@@ -9,7 +9,7 @@ chrome.runtime.onMessage.addListener(function(request) {
   htmlElemPos = htmlElemPos.replace(/\s/g, "").toLowerCase();
 
   if(htmlElemPos == "fixed"){
-    htmlElem.style.setProperty("position", "absolute", "important")
+    htmlElem.style.setProperty("position", "initial", "important")
   }
   elms.push(htmlElem);
 
