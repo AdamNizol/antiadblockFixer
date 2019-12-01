@@ -27,10 +27,10 @@ chrome.runtime.onMessage.addListener(function(request) {
        oflwY = oflwY.replace(/\s/g, "").toLowerCase();
 
        if(oflw == "hidden"){
-         elm.style.setProperty("overflow", "auto", "important")
+         elm.style.setProperty("overflow", "initial", "important")
        }
        if( oflwY == "hidden" ){
-         elm.style.setProperty("overflow-y", "auto", "important")
+         elm.style.setProperty("overflow-y", "initial", "important")
        }
      }
 
