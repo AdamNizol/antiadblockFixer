@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener(function(request) {
        "tp-backdrop"
      ]
 
-     classBlackListed = false;
+     let classBlackListed = false;
      for(let i = 0; i< blackListClasses.length; i++){
        if (elm.classList.contains(blackListClasses[i]) ){
          classBlackListed = true;
@@ -59,5 +59,23 @@ chrome.runtime.onMessage.addListener(function(request) {
      }
 
 
-  });
+     positionClasses = [
+       "article-fixed"
+     ]
+
+     let repositionClass = false;
+     for(let i = 0; i< positionClasses.length; i++){
+       if (elm.classList.contains(positionClasses[i]) ){
+         repositionClass = true;
+         console.log(elm)
+       }
+     }
+
+     if(repositionClass){
+       elm.style.setProperty("position", "relative", "important");
+     }
+
+
+
+  }); //element loop
 })
